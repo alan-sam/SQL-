@@ -1,0 +1,20 @@
+
+            using (SqlConnection sqlCon = new SqlConnection(@"Data Source="Desktop name"\SQLEXPRESS;Initial Catalog=user_profiles;Integrated Security=True"))
+            {
+                try
+                {
+                    sqlCon.Open();
+                    SqlCommand sqlCmd = new SqlCommand("user_profiles", sqlCon);
+                    //  string query = "INSERT INTO Table_1 (email,username,Password) VALUES (@Email, @Username, Password')";
+                    sqlCmd.CommandType = CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@Email", email.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Username", username.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Password", Password.Text.Trim());
+                    sqlCmd.ExecuteNonQuery();
+
+                    all_status_updat.Content = "Profile created";
+
+                }
+               
+               }
+               
